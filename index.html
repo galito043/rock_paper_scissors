@@ -1,0 +1,72 @@
+<script>function getComputerChoice(){
+    let randomChoice = Math.random();
+    if (randomChoice < 0.33){
+        randomChoice = "rock";
+        return randomChoice
+    }
+    else if (randomChoice < 0.66){
+        randomChoice = "paper"
+        return randomChoice;
+    }
+    else{
+        randomChoice = "scissors";
+        return randomChoice;
+    }
+
+}
+let playerSelection;
+function playRound(randomChoice, playerSelection){
+    if(randomChoice == playerSelection){
+        return 'Tie'
+    }
+    switch(randomChoice){
+
+        case "rock":
+            switch(playerSelection){
+                case 'scissors':
+                    return `You lose! ${randomChoice} beats ${playerSelection}`
+                    break;
+                case 'paper':
+                    return `You Win! ${playerSelection}  beats ${randomChoice}`
+                default:
+                    return "Invalid player selection"
+            }
+            break;
+        case "paper":
+            switch(playerSelection){
+                case 'rock':
+                    return `You lose! ${randomChoice} beats ${playerSelection}`
+                    break;
+                case "scissors":
+                    return `You Win! ${playerSelection} beats ${randomChoice}`
+                    break;
+                default:
+                return "Invalid player selection"
+            }
+            break;
+        case "scissors":
+            switch(playerSelection){
+                case 'rock':
+                    return `You Win! ${playerSelection} beats ${randomChoice}`
+                    break;
+                case 'paper':
+                    return `You lose! ${randomChoice} beats ${playerSelection}`
+                    break;
+                    default:
+                        return "Invalid player selection"
+            }
+            break;
+
+    }
+}
+let randomChoice;
+function playFiveRound(randomChoice,playerSelection){
+    for(let i = 0; i < 5; i++){
+        randomChoice = getComputerChoice();
+        console.log(playRound(randomChoice, playerSelection))
+        playerSelection = prompt("Enter rock, paper or scissors")
+        playerSelection = playerSelection.toLowerCase();
+    }
+}
+playFiveRound(randomChoice,playerSelection)
+</script>
